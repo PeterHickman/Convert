@@ -1,0 +1,13 @@
+#!/bin/sh
+
+for FILE in *.avi
+do
+  BASE=`basename "${FILE}" .avi`
+
+  SRC=`echo $BASE | sed 's/ /\ /g'`.avi
+  DST=`echo $BASE | sed 's/ /\ /g'`.mp4
+
+  [ -r "${DST}" ] && rm "${DST}"
+
+  ffmpeg -i "${SRC}" -strict -2 "${DST}"
+done

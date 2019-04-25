@@ -1,0 +1,13 @@
+#!/bin/sh
+
+for FILE in *.wmv
+do
+  BASE=`basename "${FILE}" .wmv`
+
+  SRC=`echo $BASE | sed 's/ /\ /g'`.wmv
+  DST=`echo $BASE | sed 's/ /\ /g'`.mp4
+
+  [ -r "${DST}" ] && rm "${DST}"
+
+  ffmpeg -i "${SRC}" -c:v libx264 -crf 20 -c:a aac -q:a 100 "${DST}"
+done
