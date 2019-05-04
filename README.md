@@ -5,6 +5,10 @@ A collection of scripts that converts one thing to another
 
 Convert all the current `.avi` files into `.mp4`
 
+## `flac2mp3`
+
+Convert FLAC to MP3 including some tags
+
 ## `rescale720`
 
 Rescale an `.mkv` to 720pp
