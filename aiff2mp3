@@ -1,0 +1,16 @@
+#!/bin/sh
+
+for FILE in *.aiff
+do
+  BASE=`basename "${FILE}" .aiff`
+
+  SRC=`echo $BASE | sed 's/ /\ /g'`.aiff
+  DST=`echo $BASE | sed 's/ /\ /g'`.mp3
+
+  [ -r "${DST}" ] && rm "${DST}"
+
+  ffmpeg -i "${SRC}" -f mp3 -acodec libmp3lame -ab 320000 -ar 44100 "${DST}"
+done
+
+
+
