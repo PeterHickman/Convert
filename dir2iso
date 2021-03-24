@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+DIR=$1
+if [ "${DIR}" = "" ]; then
+  echo "The first argument should be the directory"
+  exit 1
+fi
+
+if [ ! -d "${DIR}" ]; then
+  echo "The directory [${DIR}] does not exist"
+  exit 2
+fi
+
+shift
+
+ISO=$1
+if [ "${ISO}" = "" ]; then
+  echo "The second argument is the name of the iso file"
+  exit 3
+fi
+
+if [ -e "${ISO}" ]; then
+  echo "The iso file [${ISO}] should not exist"
+  exit 4
+fi
+
+set -euo pipefail
+
+hdiutil makehybrid -o "${ISO}" -iso -joliet "${DIR}"
+

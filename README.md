@@ -5,6 +5,10 @@ A collection of scripts that converts one thing to another
 
 Convert all the current `.avi` files into `.mp4`
 
+## `dir2iso`
+
+Converts a directory into an ISO disk image
+
 ## `flac2mp3`
 
 Convert FLAC to MP3 including some tags
